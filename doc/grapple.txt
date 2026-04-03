@@ -1,4 +1,4 @@
-*grapple.txt*          For NVIM v0.9.0          Last change: 2024 September 29
+*grapple.txt*            For NVIM v0.9.0            Last change: 2026 April 03
 
 ==============================================================================
 Table of Contents                                  *grapple-table-of-contents*
@@ -52,7 +52,7 @@ FEATURES                                       *grapple-grapple.nvim-features*
 
 REQUIREMENTS                               *grapple-grapple.nvim-requirements*
 
-- Neovim >= 0.10 <https://github.com/neovim/neovim/releases/tag/v0.10.0>
+- Neovim >= 0.11 <https://github.com/neovim/neovim/releases/tag/v0.11.0>
 - nvim-web-devicons <https://github.com/nvim-tree/nvim-web-devicons> (optional)
 
 
@@ -302,9 +302,9 @@ USAGE                                             *grapple-grapple.nvim-usage*
 
 In general, the API is as follows:
 
-**Lua**`require("grapple").{method}(...)`
+**Lua**: `require("grapple").{method}(...)`
 
-**Command**`:Grapple [method] [opts...]`
+**Command**: `:Grapple [method] [opts...]`
 
 Where `opts` in the user command is a list of `value` arguments and `key=value`
 keyword arguments. For example,
@@ -329,20 +329,20 @@ GRAPPLE.TAG
 
 Create a grapple tag.
 
-**Command**`:Grapple tag [buffer={buffer}] [path={path}] [index={index}]
+**Command**: `:Grapple tag [buffer={buffer}] [path={path}] [index={index}]
 [name={name}] [scope={scope}]`
 
-**API**`require("grapple").tag(opts)`
+**API**: `require("grapple").tag(opts)`
 
-**opts?**|grapple-`grapple.options`|
+**opts?**: |grapple-`grapple.options`|
 
-- **buffer?**`integer` (default: `0`)
-- **path?**`string`
-- **index?**`integer`
-- **name?**`string`
-- **scope?**`string`
+- **buffer?**: `integer` (default: `0`)
+- **path?**: `string`
+- **index?**: `integer`
+- **name?**: `string`
+- **scope?**: `string`
 
-**Note**only one tag can be created _per scope per file_. If a tag already
+**Note**: only one tag can be created _per scope per file_. If a tag already
 exists for the given file or buffer, it will be overridden with the new tag.
 
 Examples ~
@@ -366,11 +366,11 @@ GRAPPLE.UNTAG
 
 Remove a Grapple tag.
 
-**API**`require("grapple").untag(opts)`
+**API**: `require("grapple").untag(opts)`
 
-**opts?**|grapple-`grapple.options`| (one of)
+**opts?**: |grapple-`grapple.options`| (one of)
 
-**Note**Tag is removed based on one of (in order): `index`, `name`, `path`,
+**Note**: Tag is removed based on one of (in order): `index`, `name`, `path`,
 `buffer`
 
 Examples ~
@@ -391,9 +391,9 @@ GRAPPLE.TOGGLE
 
 Toggle a Grapple tag.
 
-**API**`require("grapple").toggle(opts)`
+**API**: `require("grapple").toggle(opts)`
 
-**opts?**|grapple-`grapple.options`|
+**opts?**: |grapple-`grapple.options`|
 
 Examples ~
 
@@ -407,11 +407,11 @@ GRAPPLE.SELECT
 
 Select a Grapple tag.
 
-**API**`require("grapple").select(opts)`
+**API**: `require("grapple").select(opts)`
 
-**opts?**|grapple-`grapple.options`| (one of)
+**opts?**: |grapple-`grapple.options`| (one of)
 
-**Note**Tag is selected based on one of (in order): `index`, `name`, `path`,
+**Note**: Tag is selected based on one of (in order): `index`, `name`, `path`,
 `buffer`
 
 Examples ~
@@ -426,14 +426,14 @@ GRAPPLE.CYCLE_TAGS
 
 Cycle through and select the next or previous available tag for a given scope.
 
-**API**`require("grapple").cycle_tags(direction, opts)`
+**API**: `require("grapple").cycle_tags(direction, opts)`
 
 Where:
 
-- **direction**`"next"` | `"prev"`
-- **opts?**|grapple-`grapple.options`| (one of)
+- **direction**: `"next"` | `"prev"`
+- **opts?**: |grapple-`grapple.options`| (one of)
 
-**Note**Starting tag is searched based on one of (in order): `index`, `name`,
+**Note**: Starting tag is searched based on one of (in order): `index`, `name`,
 `path`, `buffer`
 
 Examples ~
@@ -453,14 +453,14 @@ Cycle through and use the next or previous available scope. By default, will
 only cycle through non-`hidden` scopes. Use `{ all = true }` to cycle through
 _all_ defined scopes.
 
-**API**`require("grapple").cycle_scopes(direction, opts)`
+**API**: `require("grapple").cycle_scopes(direction, opts)`
 
 Where:
 
-- **direction**`"next"` | `"prev"`
-- **opts?**`table`
-    - **scope?**`string` scope name (default: `settings.scope`)
-    - **all?**`boolean` (default: `false`)
+- **direction**: `"next"` | `"prev"`
+- **opts?**: `table`
+    - **scope?**: `string` scope name (default: `settings.scope`)
+    - **all?**: `boolean` (default: `false`)
 
 Examples ~
 
@@ -484,12 +484,12 @@ GRAPPLE.UNLOAD
 
 Unload tags for a give (scope) name or loaded scope (id).
 
-**API**`require("grapple").unload(opts)`
+**API**: `require("grapple").unload(opts)`
 
-**opts?**`table`
+**opts?**: `table`
 
-- **scope?**`string` scope name (default: `settings.scope`)
-- **id?**`string` the ID of a resolved scope
+- **scope?**: `string` scope name (default: `settings.scope`)
+- **id?**: `string` the ID of a resolved scope
 
 Examples ~
 
@@ -509,12 +509,12 @@ GRAPPLE.RESET
 
 Reset tags for a given (scope) name or loaded scope (id).
 
-**API**`require("grapple").reset(opts)`
+**API**: `require("grapple").reset(opts)`
 
-**opts?**`table`
+**opts?**: `table`
 
-- **scope?**`string` scope name (default: `settings.scope`)
-- **id?**`string` the ID of a resolved scope
+- **scope?**: `string` scope name (default: `settings.scope`)
+- **id?**: `string` the ID of a resolved scope
 
 Examples ~
 
@@ -534,11 +534,11 @@ GRAPPLE.PRUNE
 
 Prune save files based on their last modified time.
 
-**API**`require("grapple").prune(opts)`
+**API**: `require("grapple").prune(opts)`
 
-**opts?**`table`
+**opts?**: `table`
 
-- **limit?**`integer` | `string` modified time limit (default: `settings.prune`)
+- **limit?**: `integer` | `string` modified time limit (default: `settings.prune`)
 
 Examples ~
 
@@ -565,12 +565,12 @@ GRAPPLE.QUICKFIX
 
 Open the quickfix window populated with paths from a given scope
 
-**API**`require("grapple").quickfix(opts)`
+**API**: `require("grapple").quickfix(opts)`
 
-**opts?**`table`
+**opts?**: `table`
 
-- **scope?**`string` scope name (default: `settings.scope`)
-- **id?**`string` the ID of a resolved scope
+- **scope?**: `string` scope name (default: `settings.scope`)
+- **id?**: `string` the ID of a resolved scope
 
 Examples ~
 
@@ -587,13 +587,13 @@ GRAPPLE.EXISTS
 
 Return if a tag exists. Used for statusline components
 
-**API**`require("grapple").exists(opts)`
+**API**: `require("grapple").exists(opts)`
 
-**returns**`boolean`
+**returns**: `boolean`
 
-**opts?**|grapple-`grapple.options`| (one of)
+**opts?**: |grapple-`grapple.options`| (one of)
 
-**Note**Tag is searched based on one of (in order): `index`, `name`, `path`,
+**Note**: Tag is searched based on one of (in order): `index`, `name`, `path`,
 `buffer`
 
 Examples ~
@@ -611,13 +611,13 @@ GRAPPLE.FIND
 
 Search for a tag in a given scope.
 
-**API**`require("grapple").find(opts)`
+**API**: `require("grapple").find(opts)`
 
-**opts?**|grapple-`grapple.options`| (one of)
+**opts?**: |grapple-`grapple.options`| (one of)
 
-**returns**|grapple-`grapple.tag`| | `nil`, `string?` error
+**returns**: |grapple-`grapple.tag`| | `nil`, `string?` error
 
-**Note**Tag is searched based on one of (in order): `index`, `name`, `path`,
+**Note**: Tag is searched based on one of (in order): `index`, `name`, `path`,
 `buffer`
 
 Examples ~
@@ -640,9 +640,9 @@ GRAPPLE.DEFINE_SCOPE
 
 Create a user-defined scope.
 
-**API**`require("grapple").define_scope(definition)`
+**API**: `require("grapple").define_scope(definition)`
 
-**definition**|grapple-`grapple.scope_definition`|
+**definition**: |grapple-`grapple.scope_definition`|
 
 Examples ~
 
@@ -717,20 +717,20 @@ GRAPPLE.DELETE_SCOPE
 
 Delete a default or user-defined scope.
 
-**API**`require("grapple").delete_scope(scope)`
+**API**: `require("grapple").delete_scope(scope)`
 
-**scope**`string` scope name
+**scope**: `string` scope name
 
-**returns**`string?` error
+**returns**: `string?` error
 
 
 GRAPPLE.USE_SCOPE
 
 Change the currently selected scope.
 
-**API**`require("grapple").use_scope(scope)`
+**API**: `require("grapple").use_scope(scope)`
 
-**scope**`string` scope name
+**scope**: `string` scope name
 
 Examples ~
 
@@ -768,12 +768,12 @@ are the `cwd` scope which only updates on `DirChanged`.
 
 The following scopes are made available by default:
 
-- `global`tags are scoped to a global namespace
-- `static`tags are scoped to neovim’s initial working directory
-- `cwd`tags are scoped to the current working directory
-- `lsp`tags are scoped to the root directory of the current buffer’s attached LSP server, **fallback**`cwd`
-- `git`tags are scoped to the current git repository, **fallback**`cwd`
-- `git_branch`tags are scoped to the current git directory **and** git branch, **fallback**`cwd`
+- `global`: tags are scoped to a global namespace
+- `static`: tags are scoped to neovim’s initial working directory
+- `cwd`: tags are scoped to the current working directory
+- `lsp`: tags are scoped to the root directory of the current buffer’s attached LSP server, **fallback**: `cwd`
+- `git`: tags are scoped to the current git repository, **fallback**: `cwd`
+- `git_branch`: tags are scoped to the current git directory **and** git branch, **fallback**: `cwd`
 
 It is also possible to create your own **custom scope**. See the
 |grapple-scope-api| for more information.
@@ -834,23 +834,23 @@ modifiable. Several actions are available by default:
 - **Split (horizontal)** (`<c-s>`): select the tag under the cursor (`split`)
 - **Split (vertical)** (`|`): select the tag under the cursor (`vsplit`)
 - **Quick select** (default: `1-9`): select the tag at a given index
-- **Deletion**delete a line to delete the tag
-- **Reordering**move a line to move a tag
+- **Deletion**: delete a line to delete the tag
+- **Reordering**: move a line to move a tag
 - **Renaming** (`R`): rename the tag under the cursor
 - **Quickfix** (`<c-q>`): send all tags to the quickfix list (||quickfix||)
 - **Go up** (`-`): navigate up to the |grapple-scopes-window|
 - **Help** (`?`): open the help window
 
-**API**
+**API**:
 
 - `require("grapple").open_tags(opts)`
 - `require("grapple").toggle_tags(opts)`
 
-**opts?**`table`
+**opts?**: `table`
 
-- **scope?**`string` scope name
-- **id?**`string` the ID of a resolved scope
-- **style?**the |grapple-style| to use for the tags window
+- **scope?**: `string` scope name
+- **id?**: `string` the ID of a resolved scope
+- **style?**: the |grapple-style| to use for the tags window
 
 Examples ~
 
@@ -877,7 +877,7 @@ Some basic actions are available by default:
 - **Toggle** (`g.`): toggle showing both hidden and unhidden scopes
 - **Help** (`?`): open the help window
 
-**API**
+**API**:
 
 - `require("grapple").open_scopes()`
 - `require("grapple").toggle_scopes()`
@@ -890,7 +890,7 @@ Examples ~
 <
 
 
-LOADEDSCOPES WINDOW ~
+LOADED SCOPES WINDOW ~
 
 
 
@@ -905,14 +905,14 @@ modifiable. Some basic actions are available by default:
 - **Toggle** (`g.`): toggle showing both loaded and unloaded scope IDs
 - **Help** (`?`): open the help window
 
-**API**
+**API**:
 
 - `require("grapple").open_loaded(opts)`
 - `require("grapple").toggle_loaded(opts)`
 
-**opts?**`table`
+**opts?**: `table`
 
-- **all**`boolean` (default: `false`)
+- **all**: `boolean` (default: `false`)
 
 Examples ~
 
@@ -985,18 +985,18 @@ STATUSLINE ~
 
 A statusline component can be easily added to show whether a buffer is tagged.
 
-**API**
+**API**:
 
 - `require("grapple").statusline(opts)`
 
-**opts?**`grapple.statusline.options` (default: `settings.statusline`)
+**opts?**: `grapple.statusline.options` (default: `settings.statusline`)
 
-- **icon**`string` (default: `"󰛢"`)
-- **active**`string` (default: `[%s]`)
-- **inactive**`string` (default: `" %s"`)
-- **include_icon**`boolean` (default: `true`)
+- **icon**: `string` (default: `"󰛢"`)
+- **active**: `string` (default: `[%s]`)
+- **inactive**: `string` (default: `" %s"`)
+- **include_icon**: `boolean` (default: `true`)
 
-**Also available**
+**Also available**:
 
 - `require("grapple").name_or_index()`
 - `require("grapple").exists()`
