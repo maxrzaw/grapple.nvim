@@ -95,9 +95,7 @@ end
 ---@param time_limit integer | string
 ---@return string[] | nil pruned, string? error
 function TagManager:prune(time_limit)
-    vim.validate({
-        time_limit = { time_limit, { "number", "string" } },
-    })
+    vim.validate("time_limit", time_limit, { "number", "string" })
 
     local limit_sec
     if type(time_limit) == "number" then
