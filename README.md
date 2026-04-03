@@ -39,7 +39,7 @@ While Grapple shares similarities to Harpoon (and other file navigation plugins)
 
 ## Requirements
 
-- [Neovim >= 0.10](https://github.com/neovim/neovim/releases/tag/v0.10.0)
+- [Neovim >= 0.11](https://github.com/neovim/neovim/releases/tag/v0.11.0)
 - [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) (optional)
 
 ## Quickstart
